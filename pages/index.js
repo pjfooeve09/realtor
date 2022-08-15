@@ -6,8 +6,7 @@ import axios from "axios";
 import { baseUrl, config } from '../utils/fetchApi';
 import RentalBanner from '../components/RentalBanner';
 import SaleBanner from '../components/SaleBanner';
-import RentalProperties from '../components/RentalProperties';
-import SaleProperties from '../components/SaleProperties';
+import Property from '../components/Property';
 
 export default class index extends Component {
   constructor (props){
@@ -35,16 +34,18 @@ export default class index extends Component {
   }
 
   render() {
-    const {rentalProperties} = this.state
-    const {saleProperties} = this.state
-    const {isLoading} = this.state
+    const {rentalProperties, saleProperties, isLoading} = this.state
     
     return (
       <Box>
         {!isLoading ? <RentalBanner /> : null}
-        <RentalProperties rental={rentalProperties}/>
+        <Flex flexWrap='wrap'>
+          {rentalProperties.map((property) => <Property property={property} key={property.id} />)}
+        </Flex>
         {!isLoading ? <SaleBanner /> : null}
-        <SaleProperties sale={saleProperties} />
+        <Flex flexWrap='wrap'>
+          {saleProperties.map((property) => <Property property={property} key={property.id} />)}
+        </Flex>
       </Box>
     )
   }
