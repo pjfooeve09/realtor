@@ -2,7 +2,7 @@ export const baseUrl = "https://bayut.p.rapidapi.com"
 
 export const config = {
       headers: {
-        'X-RapidAPI-Key': 'f304a53aa0msh94f4b87b20b7047p130d3bjsn453105195bfa',
+        'X-RapidAPI-Key': '86fd8ccacfmshd6b6afc18fc8706p1dfa17jsn8b1b8bd3fe5b',
         'X-RapidAPI-Host': 'bayut.p.rapidapi.com'
       }
 }
