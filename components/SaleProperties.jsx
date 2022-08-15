@@ -63,11 +63,7 @@ export default class SaleProperties extends Component {
                         </Text>
                       </Flex>
                       <Box>
-                        <Avatar
-                          size="sm"
-                          height="150px"
-                          src={agency.logo.url}
-                        ></Avatar>
+                        <Avatar size="sm" src={agency.logo.url}></Avatar>
                       </Box>
                     </Flex>
                     <Flex
