@@ -25,7 +25,7 @@ export default class Property extends Component {
       rooms,
     } = this.props.property;
     return (
-      <Flex key={this.props.key}>
+      <Flex key={this.props.id}>
         <Link href={`/property/${externalId}`}>
           <Flex
             flexWrap="wrap"

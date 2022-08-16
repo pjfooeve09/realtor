@@ -8,6 +8,7 @@ import RentalBanner from '../components/RentalBanner';
 import SaleBanner from '../components/SaleBanner';
 import Property from '../components/Property';
 import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
 
 export default class index extends Component {
   constructor (props){
@@ -38,21 +39,18 @@ export default class index extends Component {
     const {rentalProperties, saleProperties, isLoading} = this.state
     
     return (
-      <React.Fragment>
-
       <Box>
         {!isLoading ? <NavBar /> : null}
         {!isLoading ? <RentalBanner /> : null}
         <Flex flexWrap='wrap'>
-          {rentalProperties.map((property) => <Property property={property} key={property.id} />)}
+          {rentalProperties.map((property) => <Property property={property} key={property.id} id={property.id} />)}
         </Flex>
         {!isLoading ? <SaleBanner /> : null}
         <Flex flexWrap='wrap'>
           {saleProperties.map((property) => <Property property={property} key={property.id} />)}
         </Flex>
+        {!isLoading ? <Footer /> : null}
       </Box>
-      </React.Fragment>
-
     )
   }
 }
