@@ -18,7 +18,7 @@ export default class NavBar extends Component {
   render() {
     return (
       <Flex p="2" borderBottom="1px" borderColor="gray.100">
-        <Box fontSize="3xl" color="blue.300" fontWeight="bold">
+        <Box fontSize="3xl" color="blue.400" fontWeight="bold">
           <Link href="/" paddingLeft="2">
             Realtor
           </Link>
@@ -40,10 +40,10 @@ export default class NavBar extends Component {
                 <MenuItem icon={<BsSearch />}>Search</MenuItem>
               </Link>
               <Link href="/search?purpose=for-sale" passHref>
-                <MenuItem icon={<FcAbout />}>Properties for Sale</MenuItem>
+                <MenuItem icon={<FcAbout />}>Buy Property</MenuItem>
               </Link>
               <Link href="/search?purpose=for-rent" passHref>
-                <MenuItem icon={<FiKey />}>Properties for Rent</MenuItem>
+                <MenuItem icon={<FiKey />}>Rent Property</MenuItem>
               </Link>
             </MenuList>
           </Menu>

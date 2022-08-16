@@ -30,7 +30,7 @@ export default class index extends Component {
 
   getSaleProperties(){
     axios.request(`${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-sale&hitsPerPage=6`, config)
-      .then(resp => this.setState({saleProperties: resp.data.hits}))
+      .then(resp => this.setState({saleProperties: resp.data.hits, isLoading: false}))
   }
 
   render() {
