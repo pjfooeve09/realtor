@@ -33,18 +33,18 @@ export default class NavBar extends Component {
               color="red.400"
             />
             <MenuList>
-              <Link href="/" passHref>
+              <a href="/">
                 <MenuItem icon={<FcHome />}>Home</MenuItem>
-              </Link>
-              <Link href="/search" passHref>
+              </a>
+              <a href="/search">
                 <MenuItem icon={<BsSearch />}>Search</MenuItem>
-              </Link>
-              <Link href="/search?purpose=for-sale" passHref>
-                <MenuItem icon={<FcAbout />}>Buy Property</MenuItem>
-              </Link>
-              <Link href="/search?purpose=for-rent" passHref>
-                <MenuItem icon={<FiKey />}>Rent Property</MenuItem>
-              </Link>
+              </a>
+              <a href="/search?purpose=for-sale">
+                <MenuItem icon={<FcAbout />}>Properties for Sale</MenuItem>
+              </a>
+              <a href="/search?purpose=for-rent">
+                <MenuItem icon={<FiKey />}>Properties for Rent</MenuItem>
+              </a>
             </MenuList>
           </Menu>
         </Box>

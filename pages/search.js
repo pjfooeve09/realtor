@@ -46,7 +46,6 @@ export default withRouter(class search extends Component {
     this.setState((prevState)=>({searchFilters: !prevState.searchFilters}))
   }
 
-
   render() {
     const {searchFilters, properties, isLoading} = this.state
     const propertyType = this.props.router.query.purpose
@@ -65,8 +64,8 @@ export default withRouter(class search extends Component {
           alignItems="center"
           onClick={this.handleClick}
         >
-        <Text>Search Property By Filters</Text>
-        <Icon paddingLeft="2" w="7" as={BsFilter} />
+          <Text>Search Property By Filters</Text>
+          <Icon paddingLeft="2" w="7" as={BsFilter} />
         </Flex>
         {searchFilters && <SearchFilters />}
         <Text fontSize="2xl" p="4" fontWeight="bold">
@@ -85,4 +84,3 @@ export default withRouter(class search extends Component {
     )
   }
 })
-
