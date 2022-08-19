@@ -26,7 +26,7 @@ class searchFilters extends Component {
     //3. because we are using useFilter, we can now access the params in the URL
     const { params } = this.props;
     const { query } = this.props.params; //5. where this.params.query come from? when we have anything after the question mark in search (search?), it will assign a query; for ex: when we have "search?purpose=for-rent", if we console.log this.params.query, we will get query: {purpose: for-rent}
-    const path = this.props.params.pathname; //4. this return "/search"
+    const { pathname } = this.props.params; //4. this return "/search"
     const values = getFilterValues(filterValues); //6. console.log just filterValues returns what we defined in #1 below which is "purpose: for-rent". Now, console.log(getFilterValues(filterValues)) will destruct "purpose" and returns the attributes "name" and "value". Take a look at geFilterValues function in filterData.js
     values.forEach((item) => {
       if (item.value && filterValues?.[item.name]) {
@@ -34,7 +34,7 @@ class searchFilters extends Component {
         query[item.name] = item.value; //[item.name] is the string "purpose" in filterData.js and item.value is the value of purpose, which is "for rent". It will return purpose: 'for-rent' and assign it to the query
       }
     });
-    params.push({ pathname: path, query: query }); //this is where we see the url gets updated to show the path and the query
+    params.push({ pathname: pathname, query: query }); //this is where we see the url gets updated to show the path and the query
   };
 
   render() {
