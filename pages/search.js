@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Image from 'next/image'
-import Router, { withRouter } from 'next/router'
 import { Flex, Box, Text, Icon } from '@chakra-ui/react';
 import { BsFilter } from 'react-icons/bs';
 import SearchFilters from '../components/searchFilters';
@@ -8,8 +7,9 @@ import Property from '../components/Property';
 import NoResult from '../assets/images/noresult.svg'
 import { baseUrl, config } from '../utils/fetchApi';
 import axios from "axios";
+import { useRouter } from "next/router";
 
-export default withRouter(class search extends Component {
+class search extends Component {
   constructor(props){
     super(props)
     this.state={
@@ -23,9 +23,15 @@ export default withRouter(class search extends Component {
     this.getProperties()
   }
 
+  componentDidUpdate(prevProps){
+    if(prevProps.params !== this.props.params){
+      this.getProperties()
+    }
+  }
+
   getProperties = () => {
-    const {query} = this.props.router
-    const {asPath} = this.props.router
+    const {query} = this.props.params
+    const {asPath} = this.props.params
     
     const purpose = asPath.slice(16, 55) 
     const rentFrequency = query.rentFrequency || 'yearly';
@@ -48,7 +54,7 @@ export default withRouter(class search extends Component {
 
   render() {
     const {searchFilters, properties, isLoading} = this.state
-    const propertyType = this.props.router.query.purpose
+    const propertyType = this.props.params.query.purpose
 
     return (
       <Box>
@@ -67,7 +73,7 @@ export default withRouter(class search extends Component {
           <Text>Search Property By Filters</Text>
           <Icon paddingLeft="2" w="7" as={BsFilter} />
         </Flex>
-        {searchFilters && <SearchFilters />}
+        {searchFilters && <SearchFilters/>}
         <Text fontSize="2xl" p="4" fontWeight="bold">
           Properties {propertyType}
         </Text>
@@ -83,4 +89,10 @@ export default withRouter(class search extends Component {
       </Box>
     )
   }
-})
+}
+
+const withParams = (Component) => {
+  return (props) => <Component {...props} params={useRouter()} />;
+};
+
+export default withParams(search);

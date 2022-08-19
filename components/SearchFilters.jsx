@@ -9,12 +9,10 @@ import {
   Icon,
   Button,
 } from "@chakra-ui/react";
-import { withRouter } from "next/router";
 import { useRouter } from "next/router";
 import { MdCancel } from "react-icons/md";
 import Image from "next/image";
 import { filterData, getFilterValues } from "../utils/filterData";
-import { createBrowserHistory } from "history";
 
 class searchFilters extends Component {
   constructor(props) {
@@ -25,33 +23,19 @@ class searchFilters extends Component {
   }
 
   handleChange = (filterValues) => {
-    localStorage.setItem("CCC", JSON.stringify(filterValues));
-    const path = this.props.params.pathname;
-    const { query } = this.props.params;
-    const values = getFilterValues(filterValues);
+    //3. because we are using useFilter, we can now access the params in the URL
+    const { params } = this.props;
+    const { query } = this.props.params; //5. where this.params.query come from? when we have anything after the question mark in search (search?), it will assign a query; for ex: when we have "search?purpose=for-rent", if we console.log this.params.query, we will get query: {purpose: for-rent}
+    const path = this.props.params.pathname; //4. this return "/search"
+    const values = getFilterValues(filterValues); //6. console.log just filterValues returns what we defined in #1 below which is "purpose: for-rent". Now, console.log(getFilterValues(filterValues)) will destruct "purpose" and returns the attributes "name" and "value". Take a look at geFilterValues function in filterData.js
     values.forEach((item) => {
       if (item.value && filterValues?.[item.name]) {
-        query[item.name] = item.value;
-        console.log(item);
+        //7. this is where we add each attribute to the query array. It will not be updated in the url unless we push them to the params below
+        query[item.name] = item.value; //[item.name] is the string "purpose" in filterData.js and item.value is the value of purpose, which is "for rent". It will return purpose: 'for-rent' and assign it to the query
       }
     });
-    this.props.params.push({ pathname: path, query: query });
+    params.push({ pathname: path, query: query }); //this is where we see the url gets updated to show the path and the query
   };
-
-  componentDidUpdate(prevProps) {
-    // const filterValues = JSON.parse(localStorage.getItem("CCC"));
-    // if (prevProps.params !== this.props.params) {
-    //   const path = this.props.params.pathname;
-    //   const { query } = this.props.params;
-    //   const values = getFilterValues(filterValues);
-    //   values.forEach((item) => {
-    //     if (item.value && filterValues?.[item.name]) {
-    //       query[item.name] = item.value;
-    //     }
-    //   });
-    //   this.props.params.push({ pathname: path, query: query });
-    // }
-  }
 
   render() {
     const { filters } = this.state;
@@ -63,15 +47,19 @@ class searchFilters extends Component {
               placeholder={filter.placeholder}
               w="fit-content"
               p="2"
-              onChange={(e) =>
-                this.handleChange({ [filter.queryName]: e.target.value })
+              onChange={
+                (e) => this.handleChange({ [filter.queryName]: e.target.value }) //1. this would return for ex: "purpose: for-rent"
               }
             >
-              {filter.items.map((item) => (
-                <option value={item.value} key={item.value}>
-                  {item.name}
-                </option>
-              ))}
+              {filter?.items?.map(
+                (
+                  item //2. this returns the actual values in options
+                ) => (
+                  <option value={item.value} key={item.value}>
+                    {item.name}
+                  </option>
+                )
+              )}
             </Select>
           </Box>
         ))}
