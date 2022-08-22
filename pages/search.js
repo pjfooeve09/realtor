@@ -9,7 +9,7 @@ import { baseUrl, config } from '../utils/fetchApi';
 import axios from "axios";
 import { useRouter } from "next/router";
 
-class search extends Component {
+class Search extends Component {
   constructor(props){
     super(props)
     this.state={
@@ -32,8 +32,7 @@ class search extends Component {
   getProperties = () => {
     const {query} = this.props.params
     const {asPath} = this.props.params
-    
-    const purpose = asPath.slice(16, 55) 
+    const purpose = asPath.slice(16, 55) || 'for-sale'
     const rentFrequency = query.rentFrequency || 'yearly';
     const minPrice = query.minPrice || '0';
     const maxPrice = query.maxPrice || '1000000';
@@ -48,7 +47,7 @@ class search extends Component {
     .then(resp => this.setState({properties: resp.data.hits, isLoading: false}))
   }
 
-  handleClick = () => {
+  filterSearch = () => {
     this.setState((prevState)=>({searchFilters: !prevState.searchFilters}))
   }
 
@@ -68,7 +67,7 @@ class search extends Component {
           fontSize="lg"
           justifyContent="center"
           alignItems="center"
-          onClick={this.handleClick}
+          onClick={this.filterSearch}
         >
           <Text>Search Property By Filters</Text>
           <Icon paddingLeft="2" w="7" as={BsFilter} />
@@ -95,4 +94,4 @@ const withParams = (Component) => {
   return (props) => <Component {...props} params={useRouter()} />;
 };
 
-export default withParams(search);
+export default withParams(Search);

@@ -22,7 +22,7 @@ class searchFilters extends Component {
     };
   }
 
-  handleChange = (filterValues) => {
+  filterProperties = (filterValues) => {
     //3. because we are using useFilter, we can now access the params in the URL
     const { params } = this.props;
     const { query } = this.props.params; //5. where this.params.query come from? when we have anything after the question mark in search (search?), it will assign a query; for ex: when we have "search?purpose=for-rent", if we console.log this.params.query, we will get query: {purpose: for-rent}
@@ -30,7 +30,7 @@ class searchFilters extends Component {
     const values = getFilterValues(filterValues); //6. console.log just filterValues returns what we defined in #1 below which is "purpose: for-rent". Now, console.log(getFilterValues(filterValues)) will destruct "purpose" and returns the attributes "name" and "value". Take a look at geFilterValues function in filterData.js
     values.forEach((item) => {
       if (item.value && filterValues?.[item.name]) {
-        //7. this is where we add each attribute to the query array. It will not be updated in the url unless we push them to the params below
+        //7. this is where we assign each attribute to the query array. It will not be updated in the url unless we push them to the params below
         query[item.name] = item.value; //[item.name] is the string "purpose" in filterData.js and item.value is the value of purpose, which is "for rent". It will return purpose: 'for-rent' and assign it to the query
       }
     });
@@ -48,7 +48,8 @@ class searchFilters extends Component {
               w="fit-content"
               p="2"
               onChange={
-                (e) => this.handleChange({ [filter.queryName]: e.target.value }) //1. this would return for ex: "purpose: for-rent"
+                (e) =>
+                  this.filterProperties({ [filter.queryName]: e.target.value }) //1. this would return for ex: "purpose: for-rent"
               }
             >
               {filter?.items?.map(
