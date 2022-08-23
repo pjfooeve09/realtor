@@ -8,12 +8,11 @@ import { BsGridFill } from "react-icons/bs";
 import { GoVerified } from "react-icons/go";
 import millify from "millify";
 import DefaultImage from "../assets/images/house.jpeg";
-import { AlertTitle } from "@chakra-ui/react";
 
 export default class Property extends Component {
   render() {
     const {
-      externalId,
+      externalID,
       coverPhoto,
       isVerified,
       price,
@@ -26,7 +25,7 @@ export default class Property extends Component {
     } = this.props.property;
     return (
       <Flex key={this.props.id}>
-        <Link href={`/property/${externalId}`}>
+        <Link href={`/property/${externalID}`}>
           <Flex
             flexWrap="wrap"
             w="410px"

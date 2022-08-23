@@ -35,7 +35,7 @@ class Search extends Component {
     const purpose = asPath.slice(16, 55) || 'for-sale'
     const rentFrequency = query.rentFrequency || 'yearly';
     const minPrice = query.minPrice || '0';
-    const maxPrice = query.maxPrice || '1000000';
+    const maxPrice = query.maxPrice || '2000000';
     const roomsMin = query.roomsMin || '0';
     const bathsMin = query.bathsMin || '0';
     const sort = query.sort || 'price-desc';
