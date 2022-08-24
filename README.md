@@ -23,7 +23,7 @@ Welcome to Realtor! this is a real estate application that allows users to brows
 . Implemented advanced filter option to filter property by, for example. min/max price, rent frequency, firnish type, etc.
 
 
-<img width="1322" alt="Screen Shot 2022-08-24 at 11 58 49 AM" src="https://user-images.githubusercontent.com/68364641/186501015-74aef805-d181-423d-9368-174fb6a26f0f.png">
+<img width="1302" alt="Screen Shot 2022-08-24 at 12 02 30 PM" src="https://user-images.githubusercontent.com/68364641/186501684-4f1ed20d-6122-432a-b48c-48028feb53f8.png">
 
 <img width="1296" alt="Screen Shot 2022-08-24 at 11 59 35 AM" src="https://user-images.githubusercontent.com/68364641/186501155-8342f868-89c1-49ea-aa8d-6e6b3acee2f3.png">
 
