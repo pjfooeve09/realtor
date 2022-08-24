@@ -8,6 +8,10 @@
 6. In the project's root directory, create a new file and name it ".env"
 7. In the .env file, add the following code `NEXT_PUBLIC_RAPID_API_KEY=[API_KEY_GOES_HERE]`
 8. Replace API_KEY_GOES_HERE with the key that was copied from the API. Ensure the API key is surrounded by quotes.
+9. In the project directory, run `npm run dev`
+10. Open http://localhost:3000 to view it in your browser.
 
 
 ## Realtor
+
+Welcome to Realtor! t
