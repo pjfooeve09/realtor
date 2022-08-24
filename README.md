@@ -14,4 +14,17 @@
 
 ## Realtor
 
-Welcome to Realtor! t
+Welcome to Realtor! this is a real estate application that allows users to browse through rental and sale properties, read the description and features that each property offers, and filter their searches based on their needs. 
+
+. Uses an API called bayut
+. Uses react advanced practices including file and folder structure and React hooks 
+. Uses Next.js that uses static generation and server-side rendering
+. Created user interface using Chakra UI 
+. Implemented advanced filter option to filter property by, for example. min/max price, rent frequency, firnish type, etc.
+
+
+<img width="1322" alt="Screen Shot 2022-08-24 at 11 58 49 AM" src="https://user-images.githubusercontent.com/68364641/186501015-74aef805-d181-423d-9368-174fb6a26f0f.png">
+
+<img width="1296" alt="Screen Shot 2022-08-24 at 11 59 35 AM" src="https://user-images.githubusercontent.com/68364641/186501155-8342f868-89c1-49ea-aa8d-6e6b3acee2f3.png">
+
+<img width="1294" alt="Screen Shot 2022-08-24 at 12 01 29 PM" src="https://user-images.githubusercontent.com/68364641/186501517-48889022-b63c-4d2c-bb13-7c447b263f3e.png">
